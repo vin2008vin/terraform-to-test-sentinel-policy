@@ -3,7 +3,7 @@ name: terraform automation to create ec2
 on:
  pull_request:
    branches:
-    - main
+    - master
  push:    
    paths: 
     - 'terraform/**'
