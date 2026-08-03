@@ -45,10 +45,10 @@ jobs:
       # 6. Install the HashiCorp Sentinel CLI
       - name: Install Sentinel CLI
         run: |
-          wget -q "https://hashicorp.com{SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip"
+          wget -q "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_linux_amd64.zip"
           unzip sentinel_${SENTINEL_VERSION}_linux_amd64.zip
           sudo mv sentinel /usr/local/bin/
-        #  rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip          
+          rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip          
 
           
 
