@@ -1,9 +1,13 @@
-import "tfplan"
+import "tfplan/v2" as tfplan
 
+# Allowed instance types
+allowed_types = ["t3.micro", "t3.small"]
+
+# Check all resources in the plan
 main = rule {
-   all tfplan.resources.aws_instance as _, instances {
-      all instances as _, r {
-            (length(r.applied.tags) else 0) >= 1
-      }
-   }
+  all tfplan.resources.aws_instance as _, instances {
+    all instances as _, instance {
+      instance.applied.instance_type in allowed_types
+    }
+  }
 }
