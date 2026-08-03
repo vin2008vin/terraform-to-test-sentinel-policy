@@ -1,0 +1,57 @@
+name: "Terraform Sentinel Policy Check"
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  sentinel-check:
+    name: "Terraform Plan & Sentinel Evaluation"
+    runs-on: ubuntu-latest
+
+    env:
+      # If using real cloud providers, configure your credentials here
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      SENTINEL_VERSION: "0.24.1" # Update to your preferred Sentinel version
+
+    steps:
+      # 1. Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Install the specified version of Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.0
+
+      # 3. Initialize the Terraform working directory
+      - name: Terraform Init
+        run: terraform init
+
+      # 4. Generate the binary Terraform execution plan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # 5. Convert the binary plan file into a Sentinel-readable JSON format
+      - name: Export Terraform Plan to JSON
+        run: terraform show -json tfplan > tfplan.json
+
+      # 6. Install the HashiCorp Sentinel CLI
+      - name: Install Sentinel CLI
+        run: |
+          wget -q "https://hashicorp.com{SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip"
+          unzip sentinel_${SENTINEL_VERSION}_linux_amd64.zip
+          sudo mv sentinel /usr/local/bin/
+          rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip
+
+      # 7. Execute the Sentinel policy engine against the plan
+      - name: Run Sentinel Policy Checks
+        run: |
+          echo "Evaluating infrastructure against governance policies..."
+          sentinel apply -config=sentinel.hcl -trace
