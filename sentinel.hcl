@@ -1,4 +1,4 @@
-policy "restrict-instance-type" {
-  source            = "./restrict-instance-type.sentinel"
+policy "enforce-mandatory-tags" {
+  source = "./enforce-mandatory-tags.sentinel"
   enforcement_level = "hard-mandatory"
 }
