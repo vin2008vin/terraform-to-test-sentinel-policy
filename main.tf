@@ -7,7 +7,6 @@ resource "aws_instance" "example" {
   instance_type = "t3.micro"
 
   tags = {
-    Name        = "example-instance"
     Environment = "dev"   # Mandatory tag
   }
 }
