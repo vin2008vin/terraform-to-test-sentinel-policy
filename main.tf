@@ -1,17 +1,13 @@
 provider "aws" {
-  region = "ap-south-1"
-
-  # Best Practice: Define global tags applied to ALL supported resources
-  default_tags {
-    tags = {
-      Environment = "dev"
-      ManagedBy   = "qa"
-      Project     = "prod"
-    }
-  }
+  region = "us-east-1"
 }
 
-resource "aws_instance" "ourfirst" {
-  ami           = "ami-0447a12f28fddb066"
-  instance_type = "t3.large"
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0" # Replace with a valid AMI ID for your region
+  instance_type = "t3.micro"
+
+  tags = {
+    Name        = "example-instance"
+    Environment = "dev"   # Mandatory tag
+  }
 }
