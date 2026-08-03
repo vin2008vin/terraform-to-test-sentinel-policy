@@ -1,0 +1,18 @@
+import "tfplan/v2" as tfplan
+
+# Filter all AWS EC2 instances from the generated plan JSON
+ec2_instances = filter tfplan.resource_changes as _, rc {
+	rc.type is "aws_instance" and
+		(rc.change.actions contains "create" or rc.change.actions contains "update")
+}
+
+# Ensure all instances use an allowed size
+instance_type_allowed = rule {
+	all ec2_instances as _, instance {
+		instance.change.after.instance_type in ["t2.small", "t3.micro"]
+	}
+}
+
+main = rule {
+	instance_type_allowed
+}
