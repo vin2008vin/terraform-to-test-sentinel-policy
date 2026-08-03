@@ -48,9 +48,8 @@ jobs:
           wget -q "https://hashicorp.com{SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip"
           unzip sentinel_${SENTINEL_VERSION}_linux_amd64.zip
           sudo mv sentinel /usr/local/bin/
-          rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip          
-          echo "Evaluating infrastructure against governance policies..."
-          sentinel apply -config=sentinel.hcl -trace
+        #  rm sentinel_${SENTINEL_VERSION}_linux_amd64.zip          
+
           
 
       # 7. Execute the Sentinel policy engine against the plan
