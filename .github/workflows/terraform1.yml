@@ -2,7 +2,7 @@ name: Terraform CI with Sentinel
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   TF_CLOUD_ORGANIZATION: "cloud-devops-vin"
