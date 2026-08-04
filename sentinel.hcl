@@ -3,8 +3,14 @@
     "path": "./common-functions/tfplan-functions/tfplan-functions.sentinel"
   }
 }
-policy "restrict-ec2-instance-type" {
-  source            = "./policies/restrict-ec2-instance-type.sentinel"
+
+"modules": {
+  "aws-functions": {
+    "path": "./aws-functions/aws-functions.sentinel"
+  }
+}
+policy "enforce-mandatory-tags" {
+  source            = "./policies/enforce-mandatory-tags.sentinel"
   enforcement_level = "hard-mandatory"
 }
 
