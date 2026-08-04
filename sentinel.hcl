@@ -5,7 +5,7 @@
 }
 
 "modules": {
-  "aws-functions": {
+  "tfconfig-functions": {
     "path": "./aws/aws-functions/aws-functions.sentinel"
   }
 }
