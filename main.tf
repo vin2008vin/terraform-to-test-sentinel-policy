@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = "ami-0c55b159cbfafe1f0" # Replace with a valid AMI ID for your region
-  instance_type = "t3.micro"
+  instance_type = "t2.small"
 
   tags = {
     Environment = "dev"   # Mandatory tag
