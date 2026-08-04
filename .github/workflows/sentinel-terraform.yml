@@ -54,4 +54,4 @@ jobs:
       - name: Run Sentinel Policy Checks
         run: |
           echo "Evaluating infrastructure against governance policies..."
-          sentinel test -json -config=sentinel.hcl -trace
+          sentinel apply -config=sentinel.hcl -trace
