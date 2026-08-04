@@ -7,12 +7,6 @@ policy "restrict-ec2-instance-type" {
   enforcement_level = "hard-mandatory"
 }
 
-mock "tfplan/v2" {
-  module {
-    source = "mock-tfplan-pass.sentinel"
-  }
-}
-
 test {
   rules = {
     main = true
