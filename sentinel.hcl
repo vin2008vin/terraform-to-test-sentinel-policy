@@ -6,7 +6,7 @@
 
 "modules": {
   "aws-functions": {
-    "path": "./aws-functions/aws-functions.sentinel"
+    "path": "./aws/aws-functions/aws-functions.sentinel"
   }
 }
 policy "enforce-mandatory-tags" {
