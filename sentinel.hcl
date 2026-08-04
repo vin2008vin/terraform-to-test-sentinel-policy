@@ -22,17 +22,17 @@
 
 policy "check-ec2-environment-tag" {
   source = "./check-ec2-environment-tag.sentinel"
-  enforcement_level = "advisory"
+  enforcement_level = "hard-mandatory"
 }
 
 policy "enforce-mandatory-tags" {
   source = "./enforce-mandatory-tags.sentinel"
-  enforcement_level = "advisory"
+  enforcement_level = "hard-mandatory"
 }
 
 policy "restrict-current-ec2-instance-type" {
   source = "./restrict-current-ec2-instance-type.sentinel"
-  enforcement_level = "advisory"
+  enforcement_level = "hard-mandatory"
 }
 
 
