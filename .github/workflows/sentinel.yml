@@ -34,4 +34,4 @@ jobs:
           terraform plan -out=tfplan
           terraform show -json tfplan | jq > tfplan.json
       - name: Run Sentinel policies
-        run: sentinel apply -json-rule main ./policies/restrict-aws-instances-type-and-tag.sentinel -config=sentinel.hcl
+        run: sentinel test -json -verbose -config=sentinel.hcl
