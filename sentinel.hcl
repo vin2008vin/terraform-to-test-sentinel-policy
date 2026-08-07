@@ -1,4 +1,4 @@
-policy "restrict-aws-instances-type-and-tag" {
-  source = "./policies/restrict-aws-instances-type-and-tag.sentinel"
+policy "restrict-ec2-instance-type" {
+  source = "./policies/restrict-ec2-instance-type.sentinel"
   enforcement_level = "advisory"
 }
