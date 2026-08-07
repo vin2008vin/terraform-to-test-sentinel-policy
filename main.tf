@@ -15,7 +15,9 @@ resource "aws_security_group" "web" {
   name        = "web"
   description = "Web server security group"
 
-
+  tags = {
+    Name  = "Web"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "http" {
@@ -29,7 +31,7 @@ resource "aws_vpc_security_group_ingress_rule" "http" {
 
 resource "aws_instance" "example" {
   ami           = "ami-0c55b159cbfafe1f0" # Replace with a valid AMI ID for your region
-  instance_type = "c5a.large"
+  instance_type = "t2.micro"
 
 }
 
