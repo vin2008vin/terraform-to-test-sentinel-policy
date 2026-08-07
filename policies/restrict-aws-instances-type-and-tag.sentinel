@@ -1,9 +1,5 @@
 # Imports mock data
-# import "tfplan/v2" as tfplan
-import "tfplan-functions" as plan
-import "tfstate-functions" as state
-import "tfconfig-functions" as config
-import "tfrun-functions" as run
+import "tfplan/v2" as tfplan
 import "aws-functions" as aws
 
 # Get all AWS instances from all modules
