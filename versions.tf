@@ -12,12 +12,4 @@ terraform {
 
   required_version = ">= 0.15"
 
-  backend "remote" {
-    organization = "vinay-tech"
-
-    workspaces {
-      name = "staging-k8s"
-    }
-  }
-
 }
