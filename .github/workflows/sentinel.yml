@@ -11,7 +11,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
-      SENTINEL_VERSION: 0.26.2
+      SENTINEL_VERSION: 0.41.0
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
@@ -34,4 +34,4 @@ jobs:
           terraform plan -out=tfplan
           terraform show -json tfplan | jq > tfplan.json
       - name: Run Sentinel policies
-        run: sentinel apply -json -config=sentinel.hcl -trace
+        run: sentinel apply -config=sentinel.hcl
