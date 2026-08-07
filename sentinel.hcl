@@ -1,6 +1,6 @@
 "modules": {
-  "tfplan-functions": {
-    "path": "./common-functions/tfplan-functions/tfplan-functions.sentinel"
+  "aws-functions": {
+    "path": "./aws/aws-functions/aws-functions.sentinel"
   }
 }
 policy "restrict-aws-instances-type-and-tag" {
