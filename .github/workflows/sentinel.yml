@@ -34,5 +34,5 @@ jobs:
           terraform plan -out=tfplan
           terraform show -json tfplan | jq > tfplan.json
       - name: Run Sentinel policies
-        run: sentinel apply -trace -config=sentinel.hcl
+        run: sentinel apply -trace -json -config=sentinel.hcl
 
